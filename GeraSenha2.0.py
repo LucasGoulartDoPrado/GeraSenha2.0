@@ -18,6 +18,19 @@ def calculaSenha(data):
     print(senha)
 
 
+def validaData(data):
+    format = "%d/%m/%Y"
+    valida = True
+    try:
+        valida = bool(dt.strptime(data, format))
+    except ValueError:
+        valida = False
+    return (valida)
+
+
 valor_str = input('Digite a data(DD/MM/AAAA): ')
-valor = dt.strptime(valor_str, '%d/%m/%Y').date()
-calculaSenha(valor)
+if validaData(valor_str) == True:
+    valor = dt.strptime(valor_str, '%d/%m/%Y').date()
+    calculaSenha(valor)
+else:
+    print('Data digitada é invalida!')
